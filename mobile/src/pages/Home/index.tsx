@@ -20,45 +20,45 @@ const Home = () => {
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-
-            <View style={styles.main}>
-                <Image source={require('../../assets/logo.png')} />
-                <View>
-                    <Text style={styles.title}>Mapa de monitoramento da Covid-19.</Text>
-                    <Text style={styles.description}>Ajudamos os municípios do Paraná a monitorar e mapear os casos confirmados e
-                    suspeitos da Covid-19, em tempo real em um mapa interativo, para que possam
+            <View style={styles.container}>
+                <View style={styles.main}>
+                    <Image source={require('../../assets/logo.png')} />
+                    <View>
+                        <Text style={styles.title}>Mapa de monitoramento da Covid-19.</Text>
+                        <Text style={styles.description}>Ajudamos os municípios do Paraná a monitorar e mapear os casos confirmados e
+                        suspeitos da Covid-19, em tempo real em um mapa interativo, para que possam
                         traçar suas estratégias de controle de forma mais eficiêntes.</Text>
+                    </View>
+                </View>
+                <View style={styles.footer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Digite a UF"
+                        value={uf}
+                        maxLength={2}
+                        autoCapitalize="characters"
+                        autoCorrect={false}
+                        onChangeText={text => { setUf(text) }}
+                    >
+                    </TextInput>
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Digite a Cidade"
+                        value={city}
+                        autoCorrect={false}
+                        onChangeText={setCity}
+                    >
+                    </TextInput>
+
+                    <RectButton style={styles.button} onPress={handlerNavigateToPoints}>
+                        <View style={styles.buttonIcon}>
+                            <Icon name="arrow-right" color="#fff" size={24}></Icon>
+                        </View>
+                        <Text style={styles.buttonText}>Entrar</Text>
+                    </RectButton>
                 </View>
             </View>
-            <View style={styles.footer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Digite a UF"
-                    value={uf}
-                    maxLength={2}
-                    autoCapitalize="characters"
-                    autoCorrect={false}
-                    onChangeText={text => { setUf(text) }}
-                >
-                </TextInput>
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Digite a Cidade"
-                    value={city}
-                    autoCorrect={false}
-                    onChangeText={setCity}
-                >
-                </TextInput>
-
-                <RectButton style={styles.button} onPress={handlerNavigateToPoints}>
-                    <View style={styles.buttonIcon}>
-                        <Icon name="arrow-right" color="#fff" size={24}></Icon>
-                    </View>
-                    <Text style={styles.buttonText}>Entrar</Text>
-                </RectButton>
-            </View>
-
         </KeyboardAvoidingView >
     );
 };
