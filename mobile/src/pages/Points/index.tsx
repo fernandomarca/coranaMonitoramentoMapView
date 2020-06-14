@@ -4,7 +4,7 @@ import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert, Image, Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { SvgUri } from 'react-native-svg';
+//import { Image } from 'react-native-svg';
 import api from '../../services/api';
 import * as Location from 'expo-location';
 
@@ -60,6 +60,7 @@ const Points = () => {
         api.get('items').then(response => {
             setItems(response.data.serializedItems);
             console.log(response.data.serializedItems)
+
         })
     }, [])
 
@@ -160,7 +161,8 @@ const Points = () => {
                             onPress={() => handleSelectItem(item.id)}
                             activeOpacity={0.6}
                         >
-                            <SvgUri width={42} height={42} uri={item.image_url} />
+
+                            <Image width={64} height={64} source={{ uri: item.image_url }} />
                             <Text style={styles.itemTitle}>{item.title}</Text>
                         </TouchableOpacity>
                     ))}
